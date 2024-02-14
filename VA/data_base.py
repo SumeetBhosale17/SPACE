@@ -5,15 +5,16 @@ import webbrowser
 import pywhatkit
 import datetime
 import search_web 
-
+from search_web import search_google
 from search_web import search_wiki
 from search_web import search_youtube
 import app_web as aw
+import Space_RS as srs
 
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[0].id)
 engine.setProperty('rate', 200)
 
 
@@ -92,29 +93,33 @@ def wishMe():
 
 
 def work(query) :
-    if "close" in query :
+    if "launch" and "rocket" in query:
+        srs.main()
+    elif "close" in query :
         aw.closeaw(query)
     elif "launch" or "open" in query :
         aw.openaw(query)
     elif "youtube" in query :
         search_youtube(query)
     elif "google" in query:
-        from search_web import search_google
         search_google(query)
     elif "wikipedia" in query:
         search_wiki(query)
-    if "what" and "time" in query:
-        t = datetime.datetime.now().strftime("%H:%S")
+    elif "what" and "time" in query:
+        t = datetime.datetime.now().strftime("%H:%M")
         speak(f"the time is {t}")
-
-    # elif "exit" or "quit" in query:
-    #     speak("quitting, thank you for using space!")
-    #     exit()
-    
+    elif "exit" or "quit" in query:
+        speak("quitting, thank you for using space!")
+        exit()
+    else :
+        speak("can't Recognize, say that again or, Invalid Command! How may i help you")
+        query = takeCommand().lower()
+        work(query)
+        
 # wishMe()
 
 
 
 
 # query = takeCommand().lower()
-# work("what the time")
+# work("launch the rocket")
