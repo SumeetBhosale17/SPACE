@@ -27,7 +27,7 @@ def takeCommand():
     except Exception as e:
         # print(e)
         speak("Say that again.....")
-        return "None"
+        takeCommand()
     return query
 
 
@@ -36,15 +36,17 @@ def locate_target():
     coordinates = takeCommand().split(' ')
     speak("Target located at coordinates: " + ', '.join(coordinates))
 
-def launch_rocket():
-    speak("Target located. Initiating launch sequence...")
-    countdown()
 
 def countdown():
     for i in range(10, 0, -1):
         speak(str(i))
         time.sleep(0.3)
     speak("Target destroyed!")
+
+
+def launch_rocket():
+    speak("Target located. Initiating launch sequence...")
+    countdown()
 
 def main():
     locate_target()

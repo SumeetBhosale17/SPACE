@@ -10,6 +10,9 @@ from search_web import search_wiki
 from search_web import search_youtube
 import app_web as aw
 import Space_RS as srs
+import temp_weat as tw
+import pyautogui
+import kb
 
 
 engine = pyttsx3.init('sapi5')
@@ -40,42 +43,6 @@ def takeCommand():
 
 
 
-# def search_google(query):
-#     import wikipedia as googleScrap
-#     query = query.replace("google","")
-#     query = query.replace("on google","")
-#     query = query.replace("search", "")
-#     query = query.replace("space","")
-#     speak("This is what I found on Google")
-
-
-#     try :
-#         pywhatkit.search(query)
-#         result = googleScrap.summary(query, 1)
-#         speak(result)
-
-#     except:
-#         speak("no, Speakable Output")
-
-# def search_youtube(query):
-#     speak("Here is What I found")
-#     query = query.replace("youtube","")
-#     query = query.replace("search","")
-#     query = query.replace("space","")
-#     query = query.replace("on youtube","")
-#     web = "https://www.youtube.com/results?search_query="+query
-#     webbrowser.open(web)
-#     pywhatkit.playonyt(query)
-#     speak("Done")
-
-# def search_wiki(query):
-#     query = query.replace("wikipedia","")
-#     query = query.replace("on wikipedia","")
-#     query = query.replace("space","")
-#     query = query.replace("search","")
-#     speak("Searching from Wikipedia.....")
-#     result = wikipedia.summary(query, 2)
-    # speak(result)
 
 def wishMe():
     hour = int(datetime.datetime.now().hour)
@@ -88,7 +55,7 @@ def wishMe():
     else :
         speak("Good Night!")
 
-    speak("I am SPACE, How may I help you")
+    speak("I am SPACE,")
 
 
 
@@ -110,6 +77,25 @@ def work(query) :
     elif "what" in query and "time" in query:
         t = datetime.datetime.now().strftime("%H:%M")
         speak(f"the time is {t}")
+    elif "temperature" in query :
+        tw.search_temp()
+    elif "weather" in query :
+        tw.weather()
+    elif "pause" in query:
+        pyautogui.press("k")
+        speak("video paused")
+    elif "play" in query:
+        pyautogui.press("k")
+        speak("video playing")
+    elif "mute" in query:
+        pyautogui.press("m")
+        speak("video muted")
+    elif "volume up" in query or "increase volume" in query or "up volume" in query:
+        speak("increasing volume")
+        kb.volume_up()
+    elif "volume down" in query or "decreasing volume"in query or "down volume" in query:
+        speak("decreasing volume")
+        kb.volume_down()
     elif "exit" in query or "quit" in query:
         speak("quitting, thank you for using space!")
         exit()
@@ -125,4 +111,4 @@ def work(query) :
 
 
 # query = takeCommand().lower()
-# work("launch rocket")
+# work("turn volume down")

@@ -1,11 +1,10 @@
+import pyautogui
 import speech_recognition as sr
 import pyttsx3
 import wikipedia
 import webbrowser
 import pywhatkit
-import datetime
-# import va_speak
-# from va_speak import speak
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
