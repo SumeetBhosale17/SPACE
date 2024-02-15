@@ -6,7 +6,7 @@ import pyttsx3
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
-engine.setProperty('rate', 300)
+engine.setProperty('rate', 200)
 
 
 def speak(audio):
@@ -21,7 +21,7 @@ def openaw(query):
     if ".com" in query:
         query = query.replace("open", "")
         query = query.replace("launch", "")
-        query = query.replace("Space", "")
+        query = query.replace("space", "")
         query = query.replace(" ", "")
         if ".com" in query :
             speak(f"Launching {query}")
@@ -48,4 +48,4 @@ def closeaw(query):
                 os.system(f"taskkill /f /im {dictapp[app]}.exe")
 
 
-# closeaw("vs code")
+

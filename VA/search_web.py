@@ -21,10 +21,11 @@ def speak(audio):
 
 def search_google(query):
     import wikipedia as googleScrap
-    query = query.replace("google","")
     query = query.replace("on google","")
+    query = query.replace("google","")
     query = query.replace("search", "")
     query = query.replace("space","")
+    speak("opening google")
     speak("This is what I found on Google")
 
 
@@ -37,21 +38,23 @@ def search_google(query):
         speak("no, Speakable Output")
 
 def search_youtube(query):
-    speak("Here is What I found")
+    speak("Here is What I found on youtube")
+    query = query.replace("on youtube","")
     query = query.replace("youtube","")
     query = query.replace("search","")
     query = query.replace("space","")
-    query = query.replace("on youtube","")
     web = "https://www.youtube.com/results?search_query="+query
     webbrowser.open(web)
+    speak("playing first video")
     pywhatkit.playonyt(query)
     speak("Done")
 
 def search_wiki(query):
-    query = query.replace("wikipedia","")
     query = query.replace("on wikipedia","")
+    query = query.replace("wikipedia","")
     query = query.replace("space","")
     query = query.replace("search","")
-    speak("Searching from Wikipedia.....")
+    speak("Searching from Wikipedia")
     result = wikipedia.summary(query, 2)
+    speak("According to wikipedia......")
     speak(result)

@@ -93,28 +93,31 @@ def wishMe():
 
 
 def work(query) :
-    if "launch" and "rocket" in query:
+    if "hello" in query :
+        speak("Hi sir, How may I help you")
+    elif "launch" in query and "rocket" in query:
         srs.main()
-    elif "close" in query :
+    elif "close" in query:
         aw.closeaw(query)
-    elif "launch" or "open" in query :
+    elif "open" in query or "launch" in query:
         aw.openaw(query)
-    elif "youtube" in query :
+    elif "youtube" in query:
         search_youtube(query)
     elif "google" in query:
         search_google(query)
     elif "wikipedia" in query:
         search_wiki(query)
-    elif "what" and "time" in query:
+    elif "what" in query and "time" in query:
         t = datetime.datetime.now().strftime("%H:%M")
         speak(f"the time is {t}")
-    elif "exit" or "quit" in query:
+    elif "exit" in query or "quit" in query:
         speak("quitting, thank you for using space!")
         exit()
-    else :
-        speak("can't Recognize, say that again or, Invalid Command! How may i help you")
+    else:
+        speak("Can't recognize that command. Please say it again or ask for help.")
         query = takeCommand().lower()
         work(query)
+
         
 # wishMe()
 
@@ -122,4 +125,4 @@ def work(query) :
 
 
 # query = takeCommand().lower()
-# work("launch the rocket")
+# work("launch rocket")
