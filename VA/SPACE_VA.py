@@ -23,12 +23,14 @@ import search_web
 
 data_base.wishMe()
 while True:
-    speak("How may I help you")
+    speak("How can I assist you")
     query = takeCommand().lower()
-    # query = "what is the time now"
-    # if "exit" or "quit" in query:
-    #     speak("quitting Sir, Thank you for using Space!")
-    #     exit()
-    # else:
+#     # query = "what is the time now"
+#     # if "exit" or "quit" in query:
+#     #     speak("quitting Sir, Thank you for using Space!")
+#     #     exit()
+#     # else:
     data_base.work(query)
+
+# data_base.work("launch missile")
     

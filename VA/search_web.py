@@ -9,7 +9,7 @@ import pywhatkit
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
-engine.setProperty('rate', 300)
+engine.setProperty('rate', 170)
 
 
 def speak(audio):

@@ -3,10 +3,10 @@ import pyttsx3
 # import data_base
 import speech_recognition as sr
 # Initialize the text-to-speech engine
-engine = pyttsx3.init()
-# voices = engine.getProperty('voices')
-# engine.setProperty('rate', 200)
-# engine.setProperty('voices', voices[1].id)
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+engine.setProperty('rate', 250)
 
 def speak(text):
     engine.say(text)
@@ -31,25 +31,26 @@ def takeCommand():
     return query
 
 
-def locate_target():
-    speak("Please enter the coordinates of the target:")
-    coordinates = takeCommand().split(' ')
-    speak("Target located at coordinates: " + ', '.join(coordinates))
+# def locate_target():
+#     speak("Please enter the coordinates of the target:")
+#     coordinates = takeCommand().split(' ')
+#     speak("Target located at coordinates: " + ', '.join(coordinates))
 
 
 def countdown():
-    for i in range(10, 0, -1):
+    engine.setProperty('rate', 300)
+    for i in range(3, 0, -1):
         speak(str(i))
-        time.sleep(0.3)
-    speak("Target destroyed!")
+        time.sleep(0.2)
+    speak("Missiles Launched!")
 
 
 def launch_rocket():
-    speak("Target located. Initiating launch sequence...")
+    speak("Launching Missiles!")
     countdown()
 
 def main():
-    locate_target()
+    # locate_target()
     launch_rocket()
 
 # if __name__ == "__main__":

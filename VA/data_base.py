@@ -17,8 +17,8 @@ import kb
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
-engine.setProperty('rate', 200)
+engine.setProperty('voice', voices[1].id)
+engine.setProperty('rate', 170)
 
 
 def speak(audio):
@@ -62,7 +62,11 @@ def wishMe():
 def work(query) :
     if "hello" in query :
         speak("Hi sir, How may I help you")
-    elif "launch" in query and "rocket" in query:
+    elif "what are you" in query or "who are you" in query:
+        speak("I'm SPACE, STRATEGIC PERSONAL ASSISTANT with COGNITIVE EXPERTISE. I'm a voice assistant who will assist you in various tasks such as Launching missiles etcetra.")
+    elif "why" in query and "created" or "made" in query:
+        speak("I have been created to assist military in battles, by helping them to launch missiles on their command.")
+    elif "launch" in query and "missile" in query:
         srs.main()
     elif "close" in query:
         aw.closeaw(query)
@@ -111,4 +115,4 @@ def work(query) :
 
 
 # query = takeCommand().lower()
-# work("turn volume down")
+# work("weather")
